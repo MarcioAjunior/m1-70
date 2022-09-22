@@ -24,18 +24,11 @@ db_connect.connect();
 const port = 5001
 
 server.get('/', (req, res) => {
-    connection.query("SELECT * FROM produtos;", (results, err)=>{
+    aws_connect.query("SELECT * FROM cliente;", (results, err)=>{
         if(err){
-            res.send(err)
-        }else{
-            res.send(results.map(item => (
-                {
-                    nome : item.nome,
-                    preco : item.preco
-                }
-            ) 
-            ))
+            console.log(err);    
         }
+            console.log(results);
     })
 
 })
