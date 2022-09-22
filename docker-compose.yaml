@@ -10,6 +10,7 @@ services:
         - MYSQL_ROOT_PASSWORD=root
       volumes:
        - ./api/db/data:/var/lib/mysql
+       - ./api/init/01.sql:/docker-entrypoint-initdb.d
       restart: always
       
 
@@ -22,4 +23,16 @@ services:
       ports : 
         - "5001:5001"
       depends_on :
+        - db
+
+    web :
+      image : php:7.2-apache
+      container_name : php-container
+      restart : always
+      volumes:
+        - ./website:/var/www/html
+      ports : 
+      - 80:80
+      depends_on:
+        - api
         - db

@@ -23,14 +23,17 @@ db_connect.connect();
 
 const port = 5001
 
-server.get('/', (req, res) => {
-    aws_connect.query("SELECT * FROM cliente;", (results, err)=>{
-        if(err){
-            console.log(err);    
-        }
-            console.log(results);
-    })
 
+//str.replace(/[!-#-\--\.]{1}/g, "");
+//replace para regra geral de REMOVER - # .
+server.get('/oi', (req, res) => {
+    aws_connect.query("SELECT * FROM cliente;", (err, results)=>{ 
+          if(err){
+            console.log('EROOOOOOOOO', err)
+          }
+           console.log(results, 'AAAAAAAAAAAAAAa')
+           console.log(typeof results, 'AAAAAAAAAAAAAAa')    
+    })
 })
 
 
