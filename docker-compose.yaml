@@ -6,11 +6,11 @@ services:
       command : --innodb-use-native-aio=0
       container_name : mysql_db
       environment:
-        - MYSQL_DATABASE=m1
+        - MYSQL_DATABASE=clientes
         - MYSQL_ROOT_PASSWORD=root
       volumes:
        - ./api/db/data:/var/lib/mysql
-       - ./api/init/01.sql:/docker-entrypoint-initdb.d
+       - ./api/init:/docker-entrypoint-initdb.d
       restart: always
       
 
